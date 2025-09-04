@@ -24,7 +24,7 @@
       ]
     },
     {
-      "source": "/public/(.*)",
+      "source": "/(favicon\\.ico|favicon-.*\\.png|apple-touch-icon\\.png|site\\.webmanifest)",
       "headers": [
         {
           "key": "Cache-Control",
