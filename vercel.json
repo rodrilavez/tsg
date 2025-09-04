@@ -1,32 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/favicon.ico",
-      "dest": "/public/favicon.ico"
-    },
-    {
-      "src": "/favicon-(.*).png",
-      "dest": "/public/favicon-$1.png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "dest": "/public/apple-touch-icon.png"
-    },
-    {
-      "src": "/site.webmanifest",
-      "dest": "/public/site.webmanifest"
-    },
-    {
-      "src": "/(android-chrome-.*).png",
-      "dest": "/public/$1.png"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
