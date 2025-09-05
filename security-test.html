@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Test Suite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        #results { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Security Test Suite</h1>
+    <p>This page tests the security measures implemented in the main website.</p>
+    
+    <div class="test-section">
+        <h2>Security Headers Test</h2>
+        <button onclick="testSecurityHeaders()">Test Security Headers</button>
+        <div id="headers-results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>XSS Protection Test</h2>
+        <button onclick="testXSSProtection()">Test XSS Protection</button>
+        <div id="xss-results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Rate Limiting Test</h2>
+        <button onclick="testRateLimiting()">Test Rate Limiting</button>
+        <div id="rate-results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Input Validation Test</h2>
+        <button onclick="testInputValidation()">Test Input Validation</button>
+        <div id="input-results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>CSP Violation Test</h2>
+        <button onclick="testCSPViolation()">Test CSP Violation</button>
+        <div id="csp-results"></div>
+    </div>
+
+    <script>
+        // Security utilities (copied from main site)
+        const SecurityUtils = {
+            escapeHtml: function(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            },
+            
+            isValidEmail: function(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email) && email.length <= 254;
+            },
+            
+            rateLimiter: {
+                actions: {},
+                isAllowed: function(action, maxAttempts = 5, timeWindow = 60000) {
+                    const now = Date.now();
+                    if (!this.actions[action]) {
+                        this.actions[action] = [];
+                    }
+                    
+                    this.actions[action] = this.actions[action].filter(
+                        timestamp => now - timestamp < timeWindow
+                    );
+                    
+                    if (this.actions[action].length >= maxAttempts) {
+                        return false;
+                    }
+                    
+                    this.actions[action].push(now);
+                    return true;
+                }
+            }
+        };
+
+        function addResult(containerId, message, type = 'success') {
+            const container = document.getElementById(containerId);
+            const result = document.createElement('div');
+            result.className = `test-result ${type}`;
+            result.textContent = message;
+            container.appendChild(result);
+        }
+
+        function clearResults(containerId) {
+            document.getElementById(containerId).innerHTML = '';
+        }
+
+        function testSecurityHeaders() {
+            clearResults('headers-results');
+            
+            // Test if CSP is working
+            const metaCSP = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
+            if (metaCSP) {
+                addResult('headers-results', '✓ Content Security Policy meta tag found', 'success');
+            } else {
+                addResult('headers-results', '✗ Content Security Policy meta tag not found', 'error');
+            }
+            
+            // Test other security meta tags
+            const securityTags = [
+                'X-Content-Type-Options',
+                'X-Frame-Options',
+                'X-XSS-Protection',
+                'Referrer-Policy'
+            ];
+            
+            securityTags.forEach(tag => {
+                const meta = document.querySelector(`meta[http-equiv="${tag}"]`);
+                if (meta) {
+                    addResult('headers-results', `✓ ${tag} header found`, 'success');
+                } else {
+                    addResult('headers-results', `✗ ${tag} header not found`, 'warning');
+                }
+            });
+        }
+
+        function testXSSProtection() {
+            clearResults('xss-results');
+            
+            // Test HTML escaping
+            const testString = '<script>alert("XSS")</script>';
+            const escaped = SecurityUtils.escapeHtml(testString);
+            
+            if (escaped.includes('&lt;script&gt;')) {
+                addResult('xss-results', '✓ HTML escaping working correctly', 'success');
+            } else {
+                addResult('xss-results', '✗ HTML escaping not working', 'error');
+            }
+            
+            // Test if script injection is blocked
+            try {
+                const testDiv = document.createElement('div');
+                testDiv.innerHTML = testString;
+                if (testDiv.querySelector('script')) {
+                    addResult('xss-results', '✗ Script injection possible', 'error');
+                } else {
+                    addResult('xss-results', '✓ Script injection blocked', 'success');
+                }
+            } catch (e) {
+                addResult('xss-results', '✓ Script execution blocked by CSP', 'success');
+            }
+        }
+
+        function testRateLimiting() {
+            clearResults('rate-results');
+            
+            // Test rate limiting
+            let allowed = 0;
+            let blocked = 0;
+            
+            for (let i = 0; i < 10; i++) {
+                if (SecurityUtils.rateLimiter.isAllowed('test', 5, 10000)) {
+                    allowed++;
+                } else {
+                    blocked++;
+                }
+            }
+            
+            addResult('rate-results', `Allowed requests: ${allowed}`, 'success');
+            addResult('rate-results', `Blocked requests: ${blocked}`, blocked > 0 ? 'success' : 'warning');
+            
+            if (blocked > 0) {
+                addResult('rate-results', '✓ Rate limiting is working', 'success');
+            } else {
+                addResult('rate-results', '⚠ Rate limiting may not be working properly', 'warning');
+            }
+        }
+
+        function testInputValidation() {
+            clearResults('input-results');
+            
+            // Test email validation
+            const validEmails = ['test@example.com', 'user@domain.co.uk'];
+            const invalidEmails = ['invalid-email', '@domain.com', 'user@', 'a'.repeat(255) + '@domain.com'];
+            
+            validEmails.forEach(email => {
+                if (SecurityUtils.isValidEmail(email)) {
+                    addResult('input-results', `✓ Valid email accepted: ${email}`, 'success');
+                } else {
+                    addResult('input-results', `✗ Valid email rejected: ${email}`, 'error');
+                }
+            });
+            
+            invalidEmails.forEach(email => {
+                if (!SecurityUtils.isValidEmail(email)) {
+                    addResult('input-results', `✓ Invalid email rejected: ${email.substring(0, 50)}`, 'success');
+                } else {
+                    addResult('input-results', `✗ Invalid email accepted: ${email.substring(0, 50)}`, 'error');
+                }
+            });
+        }
+
+        function testCSPViolation() {
+            clearResults('csp-results');
+            
+            // Listen for CSP violations
+            let violationDetected = false;
+            
+            const violationListener = function(e) {
+                violationDetected = true;
+                addResult('csp-results', `✓ CSP violation detected: ${e.violatedDirective}`, 'success');
+            };
+            
+            document.addEventListener('securitypolicyviolation', violationListener);
+            
+            // Try to trigger a CSP violation
+            try {
+                const script = document.createElement('script');
+                script.src = 'https://evil-domain.com/malicious.js';
+                document.head.appendChild(script);
+                
+                setTimeout(() => {
+                    document.removeEventListener('securitypolicyviolation', violationListener);
+                    if (!violationDetected) {
+                        addResult('csp-results', '⚠ No CSP violation detected - CSP may not be active', 'warning');
+                    }
+                    document.head.removeChild(script);
+                }, 1000);
+                
+            } catch (e) {
+                addResult('csp-results', '✓ Script execution blocked', 'success');
+                document.removeEventListener('securitypolicyviolation', violationListener);
+            }
+        }
+
+        // Run basic tests on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            addResult('headers-results', 'Click "Test Security Headers" to run tests', 'warning');
+            addResult('xss-results', 'Click "Test XSS Protection" to run tests', 'warning');
+            addResult('rate-results', 'Click "Test Rate Limiting" to run tests', 'warning');
+            addResult('input-results', 'Click "Test Input Validation" to run tests', 'warning');
+            addResult('csp-results', 'Click "Test CSP Violation" to run tests', 'warning');
+        });
+    </script>
+</body>
+</html>

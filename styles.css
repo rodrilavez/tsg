@@ -14,22 +14,6 @@ body {
     min-height: 100vh;
 }
 
-/* Skip link for accessibility */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 6px;
-    background: #fff;
-    color: #000;
-    padding: 8px;
-    text-decoration: none;
-    z-index: 1000;
-}
-
-.skip-link:focus {
-    top: 6px;
-}
-
 /* Container */
 .container {
     max-width: 1400px;
@@ -45,7 +29,6 @@ header {
     padding: 30px 0 25px 0;
     text-align: center;
     position: relative;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 header::before {
@@ -134,7 +117,8 @@ main {
     margin-top: 0;
     max-width: 1400px;
     margin: 0 auto;
-    height: calc(100vh - 220px);
+    min-height: calc(100vh - 300px);
+    height: auto;
 }
 
 /* Artist cards */
@@ -147,6 +131,7 @@ main {
     padding: 0;
     overflow: hidden;
     height: 100%;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
 }
@@ -180,7 +165,7 @@ main {
     flex-direction: column;
     height: 100%;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .artist-image {
@@ -257,6 +242,80 @@ main {
     color: #f5f5f5;
     letter-spacing: 2px;
     text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+}
+
+/* Artist links */
+.artist-links {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 10;
+    flex-shrink: 0;
+    min-height: 48px;
+}
+
+.link-icon {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    z-index: 11;
+    color: #ffffff;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.link-icon svg {
+    width: 16px;
+    height: 16px;
+    transition: all 0.3s ease;
+    color: #ffffff;
+    fill: #ffffff !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.spotify-icon {
+    color: #ffffff;
+}
+
+.spotify-icon:hover {
+    transform: scale(1.1);
+}
+
+.website-icon {
+    color: #ffffff;
+}
+
+.website-icon:hover {
+    transform: scale(1.1);
+}
+
+.instagram-icon {
+    color: #ffffff;
+}
+
+.instagram-icon:hover {
+    transform: scale(1.1);
+}
+
+.link-icon.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: not-allowed;
 }
 
 /* Footer */
@@ -403,6 +462,64 @@ footer::before {
 .city {
     font-weight: 500;
     letter-spacing: 2px;
+}
+
+/* Desktop-specific artist links visibility */
+@media (min-width: 481px) {
+    .artist-links {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+    
+    .link-icon {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative !important;
+        z-index: 11 !important;
+    }
+    
+    .link-icon svg {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        fill: #ffffff !important;
+    }
+}
+
+/* Large desktop screens - ensure proper grid and icon display */
+@media (min-width: 1400px) {
+    .artists-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 25px 20px;
+        height: auto;
+        min-height: calc(100vh - 300px);
+        max-height: none;
+    }
+    
+    .artist-card {
+        height: auto;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .artist-image {
+        flex: 1;
+        min-height: 300px;
+    }
+    
+    .artist-links {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-top: auto;
+        flex-shrink: 0;
+    }
 }
 
 /* Enhanced Responsive design */
@@ -594,102 +711,9 @@ footer::before {
         gap: 8px;
     }
     
-    .instagram-btn svg {
-        width: 20px;
-        height: 20px;
-    }
-    
     .location {
         font-size: 0.9rem;
         letter-spacing: 1px;
-        gap: 10px;
-    }
-    
-    .flag {
-        font-size: 1.5rem;
-    }
-    
-    .contact-info h3 {
-        font-size: 1rem;
-        letter-spacing: 1.5px;
-        margin-bottom: 20px;
-    }
-    
-    footer {
-        padding: 30px 0 25px 0;
-    }
-}
-
-@media (max-width: 320px) {
-    .artists-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        max-width: 100%;
-    }
-    
-    .artist-image {
-        min-height: 220px;
-    }
-    
-    .artist-name {
-        font-size: 0.8rem;
-        letter-spacing: 1.5px;
-        padding: 15px 10px;
-        min-height: 45px;
-    }
-}
-
-@media (max-width: 360px) {
-    .container {
-        padding: 0 10px;
-    }
-    
-    .header-content {
-        gap: 10px;
-    }
-    
-    .logo {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .contact-btn {
-        font-size: 0.6rem;
-        padding: 5px 10px;
-        letter-spacing: 0.5px;
-    }
-    
-    .contact-btn:hover {
-        letter-spacing: 1px;
-    }
-    
-    .artists-grid {
-        max-width: 320px;
-    }
-    
-    .artist-image {
-        height: 250px;
-    }
-    
-    .artist-name {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-        padding: 18px 12px;
-    }
-    
-    .instagram-btn {
-        font-size: 0.8rem;
-        padding: 8px 12px;
-        gap: 6px;
-    }
-    
-    .location {
-        font-size: 0.8rem;
-        gap: 8px;
-    }
-    
-    .flag {
-        font-size: 1.3rem;
     }
     
     .contact-info h3 {
@@ -778,5 +802,23 @@ footer::before {
     
     .instagram-btn {
         border-color: rgba(255,255,255,0.5);
+    }
+}
+
+/* Mobile-specific artist links adjustments */
+@media (max-width: 480px) {
+    .artist-links {
+        gap: 6px;
+        padding: 6px 10px;
+    }
+    
+    .link-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .link-icon svg {
+        width: 12px;
+        height: 12px;
     }
 }
