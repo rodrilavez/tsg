@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts - The Sakai Group</title>
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=()">
+    <meta name="robots" content="index, follow, noarchive, nosnippet">
+    
+    <!-- Favicon and Manifest -->
+    <link rel="icon" type="image/x-icon" href="./public/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./public/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./public/apple-touch-icon.png">
+    <link rel="manifest" href="./public/site.webmanifest">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- SEO and Content -->
+    <meta name="description" content="Upcoming concerts and tour dates for The Sakai Group artists">
+    <meta name="keywords" content="concerts, tour dates, live shows, music events, sakai group">
+    <link rel="stylesheet" href="./concerts.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="./index.html">
+                        <img src="./images/sakai.png" alt="The Sakai Group" />
+                    </a>
+                </div>
+                <h1 class="page-title">CONCERTS</h1>
+                <button class="back-btn" onclick="window.location.href='./index.html'">BACK</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="container">
+            <div class="concerts-grid">
+                <!-- GARZI -->
+                <div class="artist-concert-section">
+                    <button class="artist-toggle" onclick="toggleConcerts('garzi')">
+                        <div class="artist-logo-container">
+                            <img src="./images/logos/garzi.png" alt="GARZI" class="artist-logo" />
+                        </div>
+                        <span class="toggle-icon">+</span>
+                    </button>
+                    <div class="concerts-list" id="garzi-concerts">
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">Valley Bar</h3>
+                                <p class="concert-details">Garzi Live</p>
+                                <p class="concert-location">Phoenix, AZ, USA</p>
+                                <p class="concert-date">January 22, 2026</p>
+                                <p class="concert-price">Check venue for pricing</p>
+                            </div>
+                            <a href="https://www.bandsintown.com/a/15525163-garzi" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                        
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">Voodoo Room at House of Blues</h3>
+                                <p class="concert-details">Garzi Live</p>
+                                <p class="concert-location">San Diego, CA, USA</p>
+                                <p class="concert-date">January 23, 2026</p>
+                                <p class="concert-price">Check venue for pricing</p>
+                            </div>
+                            <a href="https://www.bandsintown.com/a/15525163-garzi" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                        
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">Teragram Ballroom</h3>
+                                <p class="concert-details">Garzi Live</p>
+                                <p class="concert-location">Los Angeles, CA, USA</p>
+                                <p class="concert-date">January 24, 2026</p>
+                                <p class="concert-price">Check venue for pricing</p>
+                            </div>
+                            <a href="https://www.bandsintown.com/a/15525163-garzi" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                        
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">The Chapel</h3>
+                                <p class="concert-details">Garzi Live</p>
+                                <p class="concert-location">San Francisco, CA, USA</p>
+                                <p class="concert-date">January 25, 2026</p>
+                                <p class="concert-price">Check venue for pricing</p>
+                            </div>
+                            <a href="https://www.bandsintown.com/a/15525163-garzi" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GVLLOW -->
+                <div class="artist-concert-section">
+                    <button class="artist-toggle" onclick="toggleConcerts('gvllow')">
+                        <div class="artist-logo-container">
+                            <img src="./images/logos/gvllow_classic.png" alt="GVLLOW" class="artist-logo" />
+                        </div>
+                        <span class="toggle-icon">+</span>
+                    </button>
+                    <div class="concerts-list" id="gvllow-concerts">
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">Programme Skate</h3>
+                                <p class="concert-details">With: Funerol, Dance of Days</p>
+                                <p class="concert-location">Fullerton, CA, USA</p>
+                                <p class="concert-date">January 31, 2026 • 7:30 PM</p>
+                                <p class="concert-price">$12 Advance / $15 Door • All Ages</p>
+                            </div>
+                            <a href="https://dice.fm/event/q26dwp-gvllow-funerol-dance-of-days-31st-jan-programme-skate-fullerton-tickets" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                        
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">Gray Area (Downtown Riverside)</h3>
+                                <p class="concert-details">With: Spunk</p>
+                                <p class="concert-location">Riverside, CA, USA</p>
+                                <p class="concert-date">February 7, 2026 • 7:30 PM</p>
+                                <p class="concert-price">$12 Presale / $15 Door • All Ages</p>
+                            </div>
+                            <a href="https://www.eventbrite.com/e/gvllow-w-spunk-gray-area-downtown-riverside-tickets-1979775786672" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                        
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">The Echo</h3>
+                                <p class="concert-details">Penniback Presents: Winter Mass with Patriarchy</p>
+                                <p class="concert-location">Los Angeles, CA, USA</p>
+                                <p class="concert-date">February 8, 2026 • 7:00 PM</p>
+                                <p class="concert-price">All Ages</p>
+                            </div>
+                            <a href="https://www.ticketmaster.com/penniback-presents-winter-mass-with-patriarchy-los-angeles-california-02-08-2026/event/0900638A404A7CA9" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                        
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">Markthalle</h3>
+                                <p class="concert-details">Cold Hearted Festival</p>
+                                <p class="concert-location">Hamburg, Germany</p>
+                                <p class="concert-date">November 13, 2026</p>
+                                <p class="concert-price">Festival Event</p>
+                            </div>
+                            <a href="https://www.eventim.de/event/cold-hearted-festival-markthalle-hamburg-21079822" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                        
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">Alter Schlachthof</h3>
+                                <p class="concert-details">Cold Hearted Festival</p>
+                                <p class="concert-location">Dresden, Germany</p>
+                                <p class="concert-date">November 14, 2026</p>
+                                <p class="concert-price">Festival Event</p>
+                            </div>
+                            <a href="https://www.city-ticket.de/events/cold-hearted-festival-dresden" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JOEY CASH -->
+                <div class="artist-concert-section">
+                    <button class="artist-toggle" onclick="toggleConcerts('joey')">
+                        <div class="artist-logo-container">
+                            <img src="./images/logos/joey-logo-removebg-preview.png" alt="JOEY CASH" class="artist-logo" />
+                        </div>
+                        <span class="toggle-icon">+</span>
+                    </button>
+                    <div class="concerts-list" id="joey-concerts">
+                        <div class="no-dates">
+                            <p>NO TOUR DATES SCHEDULED</p>
+                            <p class="coming-soon">CHECK BACK SOON</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MICA -->
+                <div class="artist-concert-section">
+                    <button class="artist-toggle" onclick="toggleConcerts('mica')">
+                        <div class="artist-logo-container">
+                            <img src="./images/logos/mica logo blackletter.png" alt="MICA" class="artist-logo" />
+                        </div>
+                        <span class="toggle-icon">+</span>
+                    </button>
+                    <div class="concerts-list" id="mica-concerts">
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">Ground Zero Studios</h3>
+                                <p class="concert-details">Mica & Future Nobodies West Coast Tour</p>
+                                <p class="concert-location">Phoenix, AZ, USA</p>
+                                <p class="concert-date">January 16, 2026 • 9:00 PM</p>
+                                <p class="concert-price">Check venue for pricing</p>
+                            </div>
+                            <a href="https://www.tickettailor.com/events/groundzerostudios/1937977" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                        
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">Soda Bar</h3>
+                                <p class="concert-details">With: Future Nobodies, Twin Ion Engine</p>
+                                <p class="concert-location">San Diego, CA, USA</p>
+                                <p class="concert-date">January 18, 2026 • 7:00 PM</p>
+                                <p class="concert-price">$22.15 • All Ages</p>
+                            </div>
+                            <a href="https://dice.fm/event/92xa3d-mica-future-nobodies-twin-ion-engine-18th-jan-soda-bar-san-diego-tickets" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                        
+                        <div class="concert-item">
+                            <div class="concert-info">
+                                <h3 class="concert-venue">The Echo</h3>
+                                <p class="concert-details">Penniback Presents: Winter Mass with Patriarchy</p>
+                                <p class="concert-location">Los Angeles, CA, USA</p>
+                                <p class="concert-date">February 8, 2026 • 7:00 PM</p>
+                                <p class="concert-price">All Ages</p>
+                            </div>
+                            <a href="https://www.ticketmaster.com/penniback-presents-winter-mass-with-patriarchy-los-angeles-california-02-08-2026/event/0900638A404A7CA9" target="_blank" rel="noopener noreferrer" class="ticket-btn">TICKETS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="./images/sakai.png" alt="The Sakai Group" />
+            </div>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>
+                        <a href="#" onclick="copyEmail(event)" id="email-link">CONTACT@THESAKAIGROUP.COM</a>
+                    </h3>
+                </div>
+                
+                <div class="social-location">
+                    <div class="social-links">
+                        <a href="https://instagram.com/thesakaigroup" target="_blank" rel="noopener noreferrer" class="instagram-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            @THESAKAIGROUP
+                        </a>
+                    </div>
+                    
+                    <div class="location-info">
+                        <div class="location">
+                            <span class="flag">🇺🇸</span>
+                            <span class="city">LOS ANGELES, CALIFORNIA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Security utilities from main site
+        const SecurityUtils = {
+            escapeHtml: function(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            },
+            
+            isValidEmail: function(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email) && email.length <= 254;
+            },
+            
+            rateLimiter: {
+                actions: {},
+                isAllowed: function(action, maxAttempts = 5, timeWindow = 60000) {
+                    const now = Date.now();
+                    if (!this.actions[action]) {
+                        this.actions[action] = [];
+                    }
+                    
+                    this.actions[action] = this.actions[action].filter(
+                        timestamp => now - timestamp < timeWindow
+                    );
+                    
+                    if (this.actions[action].length >= maxAttempts) {
+                        return false;
+                    }
+                    
+                    this.actions[action].push(now);
+                    return true;
+                }
+            }
+        };
+
+        function toggleConcerts(artistId) {
+            if (!SecurityUtils.rateLimiter.isAllowed('toggle', 20, 5000)) {
+                return;
+            }
+            
+            const concertsList = document.getElementById(artistId + '-concerts');
+            const allSections = document.querySelectorAll('.artist-concert-section');
+            const currentSection = concertsList.closest('.artist-concert-section');
+            const toggleIcon = currentSection.querySelector('.toggle-icon');
+            
+            // Close all other sections
+            allSections.forEach(section => {
+                if (section !== currentSection) {
+                    const list = section.querySelector('.concerts-list');
+                    const icon = section.querySelector('.toggle-icon');
+                    list.classList.remove('active');
+                    section.classList.remove('active');
+                    icon.textContent = '+';
+                }
+            });
+            
+            // Toggle current section
+            const isActive = concertsList.classList.contains('active');
+            if (isActive) {
+                concertsList.classList.remove('active');
+                currentSection.classList.remove('active');
+                toggleIcon.textContent = '+';
+            } else {
+                concertsList.classList.add('active');
+                currentSection.classList.add('active');
+                toggleIcon.textContent = '−';
+            }
+        }
+
+        function copyEmail(event) {
+            event.preventDefault();
+            
+            if (!SecurityUtils.rateLimiter.isAllowed('copy', 5, 10000)) {
+                return;
+            }
+            
+            const email = 'contact@thesakaigroup.com';
+            const emailLink = document.getElementById('email-link');
+            
+            if (!SecurityUtils.isValidEmail(email)) {
+                return;
+            }
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showCopyFeedback(emailLink, 'EMAIL COPIED!');
+                }).catch(() => {
+                    fallbackCopyTextToClipboard(email, emailLink);
+                });
+            } else {
+                fallbackCopyTextToClipboard(email, emailLink);
+            }
+        }
+        
+        function fallbackCopyTextToClipboard(text, element) {
+            if (typeof text !== 'string' || text.length > 500) {
+                return;
+            }
+            
+            const textArea = document.createElement("textarea");
+            textArea.value = SecurityUtils.escapeHtml(text);
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            textArea.style.opacity = "0";
+            textArea.setAttribute('readonly', '');
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopyFeedback(element, 'EMAIL COPIED!');
+                }
+            } catch (err) {
+                console.error('Copy failed');
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+        
+        function showCopyFeedback(element, message) {
+            if (!element) return;
+            
+            const originalText = element.textContent;
+            const sanitizedMessage = SecurityUtils.escapeHtml(message);
+            
+            element.textContent = sanitizedMessage;
+            element.style.color = '#4ade80';
+            
+            setTimeout(() => {
+                element.textContent = originalText;
+                element.style.color = '';
+            }, 2000);
+        }
+
+        // Security monitoring
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === Node.ELEMENT_NODE) {
+                                if (node.tagName === 'SCRIPT' || node.tagName === 'IFRAME') {
+                                    console.warn('Suspicious element detected');
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+            
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    </script>
+</body>
+</html>

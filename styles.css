@@ -56,9 +56,16 @@ header::before {
     z-index: 2;
 }
 
-.contact-btn {
+.header-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.contact-btn,
+.concerts-btn {
     background: transparent;
-    border: 2px solid rgba(255,255,255,0.2);
+    border: 2px solid #ffffff;
     color: #fff;
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
@@ -68,12 +75,13 @@ header::before {
     padding: 10px 20px;
     cursor: pointer;
     transition: all 0.4s ease;
+    border-radius: 0;
 }
 
-.contact-btn:hover {
-    border-color: rgba(255,255,255,0.4);
-    background: rgba(255,255,255,0.05);
-    letter-spacing: 3px;
+.contact-btn:hover,
+.concerts-btn:hover {
+    background: #ffffff;
+    color: #000000;
     transform: translateY(-1px);
 }
 
@@ -415,21 +423,22 @@ footer::before {
     font-size: 1rem;
     letter-spacing: 1.5px;
     padding: 12px 20px;
-    border: 2px solid rgba(255,255,255,0.2);
-    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    border: 2px solid #ffffff;
+    background: transparent;
     transition: all 0.4s ease;
     text-transform: uppercase;
+    border-radius: 0;
 }
 
 .instagram-btn:hover {
-    border-color: rgba(255,255,255,0.4);
-    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    background: #ffffff;
+    color: #000000;
     transform: translateY(-2px);
-    letter-spacing: 2px;
 }
 
 .instagram-btn svg {
     transition: transform 0.4s ease;
+    fill: currentColor;
 }
 
 .instagram-btn:hover svg {
@@ -569,14 +578,20 @@ footer::before {
         height: 70px;
     }
     
-    .contact-btn {
+    .header-buttons {
+        gap: 10px;
+    }
+    
+    .contact-btn,
+    .concerts-btn {
         font-size: 0.8rem;
         padding: 8px 16px;
         letter-spacing: 1.5px;
     }
     
-    .contact-btn:hover {
-        letter-spacing: 2px;
+    .contact-btn:hover,
+    .concerts-btn:hover {
+        letter-spacing: 1.5px;
     }
     
     main {
@@ -622,11 +637,6 @@ footer::before {
         letter-spacing: 1px;
     }
     
-    .location {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-    }
-    
     .contact-info h3 {
         font-size: 1rem;
         letter-spacing: 1.5px;
@@ -653,18 +663,24 @@ footer::before {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        gap: 15px;
+        gap: 10px;
     }
     
-    .contact-btn {
+    .header-buttons {
+        gap: 8px;
+    }
+    
+    .contact-btn,
+    .concerts-btn {
         font-size: 0.7rem;
         padding: 6px 12px;
         letter-spacing: 1px;
         white-space: nowrap;
     }
     
-    .contact-btn:hover {
-        letter-spacing: 1.5px;
+    .contact-btn:hover,
+    .concerts-btn:hover {
+        letter-spacing: 1px;
     }
     
     main {
@@ -715,11 +731,6 @@ footer::before {
         font-size: 0.9rem;
         letter-spacing: 1px;
     }
-    
-    .contact-info h3 {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-    }
 }
 
 /* Loading animation for images */
@@ -750,7 +761,8 @@ footer::before {
     outline-offset: 2px;
 }
 
-.contact-btn:focus {
+.contact-btn:focus,
+.concerts-btn:focus {
     outline: 3px solid rgba(255,255,255,0.6);
     outline-offset: 2px;
 }
@@ -775,12 +787,14 @@ footer::before {
         transform: scale(0.98);
     }
     
-    .contact-btn:hover {
+    .contact-btn:hover,
+    .concerts-btn:hover {
         transform: none;
         letter-spacing: 2px;
     }
     
-    .contact-btn:active {
+    .contact-btn:active,
+    .concerts-btn:active {
         transform: scale(0.95);
     }
     
